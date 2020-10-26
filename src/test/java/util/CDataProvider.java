@@ -8,8 +8,10 @@ import org.testng.annotations.DataProvider;
 public class CDataProvider extends GetData {
 
 	@DataProvider( name = "DP1")
-	public void read4V() throws InvalidFormatException, IOException {
-		readExcel_CustomRange("TestData//Form.xlsx","TestData",1,1,2,2);
+	public Object[][] read4V() throws InvalidFormatException, IOException {
+		
+				return readExcel_CustomRange("TestData//Form.xlsx","TestData",1,1,2,2);
+		
 	}
 	
 }

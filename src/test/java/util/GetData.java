@@ -12,11 +12,11 @@ public class GetData {
 
 	
 	public Object[][] readExcel_CustomRange(String fileName, String sheetName, int startRow, int startCol,  int endRow, int endCol) throws InvalidFormatException, IOException{
-		Object[][] data = new String[endRow - startRow][endCol - startCol];
+		Object[][] data = new String[endRow - startRow][endCol];
 		int x=0, y=0;
 		XSSFWorkbook xwb = new XSSFWorkbook(new File(fileName));
 		XSSFSheet xsheet = xwb.getSheet(sheetName);
-		for(int i=startRow-1; i<endRow;++i) {
+		for(int i=startRow; i<endRow;++i) {
 			Row row = xsheet.getRow(i);
 			for(int j=startCol-1;j<endCol;++j) {
 				Cell cell = row.getCell(j);
@@ -28,6 +28,8 @@ public class GetData {
 				case STRING:
 					data[x][y] = cell.getStringCellValue();
 					y++;
+					break;
+				case BLANK:
 					break;
 					
 				default:
